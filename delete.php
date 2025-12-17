@@ -3,21 +3,15 @@ include('config/config.php');
 
 $dsn = "mysql:host=$dbHost;dbname=$dbName;charset=utf8";
 
-try {
     $pdo = new PDO($dsn, $dbUser, $dbPass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if (isset($_GET['id'])) {
+    
         $sql = "DELETE FROM Rollercoaster WHERE Id = :id";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
         $statement->execute();
-    }
 
     header('Refresh: 3; url=index.php');
-} catch (PDOException $e) {
-    echo "Database fout: " . $e->getMessage();
-}
 ?>
 
 <!DOCTYPE html>

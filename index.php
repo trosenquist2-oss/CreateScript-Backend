@@ -44,6 +44,7 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
     <title>CRUD</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   </head>
 
   <body>
@@ -61,6 +62,7 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
                 <th>Top Snelheid</th>
                 <th>Hoogte</th>
                 <th>Bouwjaar</th>
+                <th>Verwijder</th>
               </tr>
             </thead>
 
@@ -73,6 +75,12 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
                   <td><?= $rollercoaster->TopSpeed ?> km/h</td>
                   <td><?= $rollercoaster->Height ?> m</td>
                   <td><?= $rollercoaster->YOFC ?></td>
+                  <td class='text-center'>
+                    <a href="delete.php?id=<?= $rollercoaster->Id; ?>">
+                    <i class="bi bi-x-square text-danger"></i>
+                    </a>
+
+              </td>
                 </tr>
               <?php endforeach; ?>
             </tbody>
